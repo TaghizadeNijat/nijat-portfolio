@@ -1,65 +1,97 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+import { HeroSection } from "@/components/HeroSection";
+import { PageContainer } from "@/components/PageContainer";
+import { ProjectCard } from "@/components/ProjectCard";
+import { QuickFacts } from "@/components/QuickFacts";
+import { SectionHeader } from "@/components/SectionHeader";
+import { featuredProjects, homeHighlights, quickFacts } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Welcome to the Electrical Engineering ePortfolio of Nijat Taghizade at Georgia Tech.",
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <PageContainer className="space-y-14">
+        <HeroSection />
+
+        <section className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+          <article className="panel">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300/80">
+              Welcome
+            </p>
+            <p className="text-sm leading-7 text-zinc-300">
+              This ePortfolio contains information about who I am, what I am interested in, my
+              current projects, my resume and my contact information.
+            </p>
+          </article>
+
+          <aside className="panel">
+            <h3 className="text-lg font-semibold text-zinc-100">Quick Highlights</h3>
+            <ul className="mt-4 space-y-3">
+              {homeHighlights.map((item) => (
+                <li key={item} className="flex gap-3 text-sm text-zinc-300">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </section>
+
+        <section className="space-y-6">
+          <SectionHeader
+            eyebrow="Featured Work"
+            title="Projects"
+            description="Here are the projects that I&apos;ve worked on in the past or I am currently developing in the present."
+          />
+          <div className="grid gap-5 md:grid-cols-2">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+          <div className="flex justify-start">
+            <Link href="/projects" className="button-secondary">
+              Explore all projects
+            </Link>
+          </div>
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-2">
+          <article className="panel">
+            <SectionHeader title="Quick Facts" />
+            <div className="mt-6">
+              <QuickFacts facts={quickFacts} />
+            </div>
+          </article>
+          <article className="panel grid gap-4 sm:grid-cols-2">
+            <div className="overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950/70">
+              <Image
+                src="/images/home/frc.jpg"
+                alt="FIRST Robotics technical work"
+                width={1578}
+                height={1578}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950/70">
+              <Image
+                src="/images/home/iseftransmissions.jpg"
+                alt="Transmission systems research visual"
+                width={1250}
+                height={1250}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </article>
+        </section>
+      </PageContainer>
+    </>
   );
 }
