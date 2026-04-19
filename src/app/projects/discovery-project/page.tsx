@@ -1,26 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { PageContainer } from "@/components/PageContainer";
 import { SectionHeader } from "@/components/SectionHeader";
+import { VideoEmbedPlaceholder } from "@/components/VideoEmbedPlaceholder";
 
 export const metadata: Metadata = {
   title: "Discovery Project",
   description:
-    "Arduino-based laser communication system discovery project (in progress) for ECE ePortfolio.",
+    "Completed Arduino-based laser communication system for Discovery Project.",
 };
-
-const partsList = [
-  "2 microcontrollers (Arduino Nano or Uno)",
-  "Laser transmitter module",
-  "Laser receiver or light sensor module",
-  "4-key keypad module or 4 pushbuttons",
-  "OLED displays (I2C)",
-  "N-channel MOSFET or transistor driver",
-  "Resistors (10k pull-down/pull-up), optional threshold tuning potentiometer",
-  "Breadboards, jumper wires, headers",
-  "USB power or 5V supply",
-];
 
 export default function DiscoveryProjectPage() {
   return (
@@ -28,116 +18,110 @@ export default function DiscoveryProjectPage() {
       <SectionHeader
         eyebrow="Required Discovery Project"
         title="Arduino-Based Laser Communication System"
-        description="This is my Georgia Tech ECE ePortfolio Discovery Project and is actively in progress. The page is intentionally structured as an evolving engineering record, with current design intent, implementation plan, and next-step milestones."
+        description="Completed"
       />
 
-      <section className="rounded-2xl border border-amber-400/30 bg-amber-500/10 p-5 text-sm text-amber-100">
-        <p className="font-medium">Status: Active development (in progress)</p>
-        <p className="mt-2 text-amber-100/90">
-          Core architecture is defined and implementation is moving from prototyping toward
-          repeatable performance testing.
-        </p>
+      <section className="rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-5 text-sm text-emerald-100">
+        <p className="font-medium">Status: Completed</p>
       </section>
 
       <section className="panel space-y-6 text-sm leading-7 text-zinc-300">
         <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Overview</h3>
+          <h3 className="text-lg font-semibold text-zinc-100">The Idea</h3>
           <p className="mt-3">
-            This discovery project explores a low-cost optical communication link using two Arduino
-            devices. The transmitter converts keypad input into Morse-code laser pulses, while the
-            receiver detects pulse timing and decodes messages for display on an OLED and the Serial
-            Monitor. The system serves as a practical testbed for embedded timing logic,
-            signal-conditioning strategy, and hardware-software integration.
+            For my Discovery Project, I built a two-device Arduino-based laser communication system
+            that sends messages using Morse code and decodes them on a second microcontroller. The
+            goal was to create a transmitter that takes user input from a navigation switch,
+            converts letters into timed laser pulses, and a receiver that detects those pulses,
+            classifies dots and dashes, and converts them back into readable text.
+          </p>
+          <p className="mt-3">
+            My original plan used Nano-style boards and OLED displays, but due to hardware and
+            compatibility limitations, the final working version used two Arduino Uno R3 boards, a
+            laser transmitter module, a laser receiver or light sensor module, a 5-way navigation
+            switch, and a 16x2 LCD on the receiver side. I chose this project because it combined
+            embedded systems, signal interpretation, breadboard prototyping, and debugging in a
+            hands-on way.
           </p>
         </article>
 
         <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Objective</h3>
+          <h3 className="text-lg font-semibold text-zinc-100">The Process</h3>
           <p className="mt-3">
-            The intended outcome is a reliable two-device prototype where encoded laser pulses are
-            interpreted correctly under normal indoor lighting with accuracy suitable for human
-            interpretation. Success is measured through consistent dot/dash discrimination, stable
-            decoding of short messages, and clear output rendering on both OLED and serial
-            interfaces.
+            I started the actual build on February 25 and completed the final tested version on
+            April 7. The first part of the process was validating the transmitter hardware. I wired
+            the navigation switch and laser transmitter to one Arduino and wrote test code to
+            confirm that different button presses could generate different Morse pulse patterns.
           </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Planned System Architecture</h3>
-          <ul className="mt-3 space-y-2">
-            <li>
-              <strong>Transmitter path:</strong> keypad input -&gt; character-to-Morse lookup -&gt;
-              timing scheduler -&gt; transistor-switched laser pulse output.
-            </li>
-            <li>
-              <strong>Receiver path:</strong> optical sensor input -&gt; thresholding/filtering
-              -&gt; pulse width and gap measurement -&gt; finite-state decode logic -&gt; text
-              reconstruction.
-            </li>
-            <li>
-              <strong>User interface:</strong> OLED displays and Serial Monitor logs for input,
-              transmission state, and decoded output confirmation.
-            </li>
-          </ul>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Parts and Components</h3>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {partsList.map((part) => (
-              <li key={part} className="rounded-lg border border-zinc-800 bg-zinc-950/70 px-3 py-2">
-                {part}
-              </li>
-            ))}
-          </ul>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Intended Outcome</h3>
           <p className="mt-3">
-            The target deliverable is a working link that can transmit and decode user-entered Morse
-            messages with practical reliability over short indoor distance. The final demonstration
-            should show repeatable transmission, robust timing classification, and understandable
-            decoded output with moderate environmental noise.
+            After that, I built the receiver using a second Arduino and the laser receiver module.
+            This became the most difficult part of the project. The receiver did not output a
+            perfectly clean digital signal, so my original pulse-width decoding method gave noisy
+            and inconsistent results. To solve this, I changed the decoding strategy and treated
+            the receiver output as bursts of detections rather than a perfectly stable high signal.
+            I then counted those bursts and used calibrated thresholds to classify them as dots or
+            dashes.
           </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Skills Being Developed</h3>
           <p className="mt-3">
-            This project is designed to strengthen embedded systems and signal-processing skills
-            through direct implementation. On hardware, I am practicing breadboard prototyping,
-            component selection, and safe laser switching with transistor drivers. On sensing, I am
-            learning to process noisy optical signals under varying ambient light using thresholding,
-            filtering, and calibration. On firmware, I am reinforcing Arduino fundamentals by
-            building finite-state encoding/decoding logic and timing-accurate pulse measurement. The
-            OLED interface work also develops practical I2C integration and lightweight human-machine
-            interface design. Across all phases, I am emphasizing test discipline: controlled
-            variation of distance, angle, and lighting while logging outcomes and tuning parameters.
+            Once both sides worked individually, I connected them into a full end-to-end system and
+            tested short messages first, especially S, O, and SOS. After the Serial Monitor decoding
+            worked reliably, I added the 16x2 LCD to the receiver so the decoded message could be
+            displayed directly on the device. Along the way, I also had to adjust my hardware
+            choices. I originally planned to use Nano-style boards and OLEDs, but because of package
+            and upload issues, I switched to Arduino Uno boards and adapted the design around the
+            components I had available.
           </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Current Status</h3>
-          <p className="mt-3">
-            The concept and component stack are defined, and the implementation plan is organized
-            into transmitter logic, receiver classification, and reliability validation phases.
-            Current effort is focused on pulse-timing consistency and threshold calibration to ensure
-            the decoding state machine remains stable during real-world tests.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Next Steps</h3>
-          <ul className="mt-3 space-y-2">
-            <li>Complete initial transmitter firmware and keypad-to-Morse mapping validation.</li>
-            <li>Finalize receiver threshold strategy for indoor ambient-light robustness.</li>
-            <li>Implement end-to-end decode pipeline with OLED output formatting.</li>
-            <li>Run repeatability tests across distance and angle conditions with logging.</li>
-            <li>Document reliability metrics and tune dot/dash timing thresholds.</li>
-          </ul>
         </article>
       </section>
+
+      <section className="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/70">
+        <div className="overflow-hidden">
+          <Image
+            src="/images/projects/discovery/Diagram.png"
+            alt="Arduino laser communication system diagram"
+            width={2872}
+            height={2872}
+            className="h-auto w-full transition duration-300 group-hover:scale-105"
+          />
+        </div>
+      </section>
+
+      <section className="panel space-y-6 text-sm leading-7 text-zinc-300">
+        <article>
+          <h3 className="text-lg font-semibold text-zinc-100">The Outcome</h3>
+          <p className="mt-3">
+            The final outcome was a working two-device prototype that could transmit Morse-coded
+            messages through a laser and decode them on a second Arduino. The receiver successfully
+            interpreted the incoming light bursts, converted them into dots and dashes, matched them
+            to letters, and displayed the decoded result in the Serial Monitor and on the LCD. I was
+            able to verify the system using messages such as SOS and other short test words.
+          </p>
+          <p className="mt-3">
+            The main success of the project was getting the full communication chain to work despite
+            several design changes and hardware limitations. The biggest challenge was the receiver,
+            since its output was noisier than expected and forced me to rethink my decoding method. I
+            also ran into board compatibility issues with Nano-style microcontrollers and had to
+            switch to Uno boards to keep the project moving.
+          </p>
+          <p className="mt-3">
+            This project helped me develop ECE-related skills in embedded programming, circuit
+            prototyping, digital input and output handling, timing-based signal decoding,
+            hardware-software integration, and debugging real physical systems. It also made me more
+            interested in embedded systems because I had to combine coding, electronics, testing, and
+            iteration to reach a working result.
+          </p>
+          <p className="mt-3">
+            Overall, the project showed me that engineering rarely works exactly as planned on the
+            first try. The final design was different from my original pitch, but the process of
+            adapting, debugging, and refining the system was what made the project valuable.
+          </p>
+        </article>
+      </section>
+
+      <VideoEmbedPlaceholder
+        title="Arduino Laser Communication Demo"
+        videoUrl="https://www.youtube.com/embed/v2cFy4j2Y9E"
+      />
 
       <Link href="/projects" className="button-secondary inline-flex">
         Back to all projects

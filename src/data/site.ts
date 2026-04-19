@@ -81,9 +81,9 @@ export const featuredProjects: ProjectPreview[] = [
     title: "Arduino-Based Laser Communication System",
     subtitle: "Discovery Project (ECE ePortfolio Requirement)",
     summary:
-      "Building a two-device Morse-code laser communication prototype with real-time pulse decoding, OLED output, and signal calibration under noise.",
+      "Built a two-device Morse-code laser communication system with reliable decoding, LCD output, and full end-to-end prototype validation.",
     tech: ["Arduino", "Embedded C/C++", "Signal Processing", "I2C Displays"],
-    status: "In Progress",
+    status: "Complete",
   },
 ];
 
