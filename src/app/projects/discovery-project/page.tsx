@@ -86,6 +86,71 @@ export default function DiscoveryProjectPage() {
         </div>
       </section>
 
+      <section className="panel space-y-4">
+        <h3 className="text-lg font-semibold text-zinc-100">Component and Wiring Table</h3>
+        <div className="overflow-x-auto rounded-xl border border-zinc-800">
+          <table className="min-w-[760px] w-full border-collapse text-left text-sm">
+            <thead className="bg-zinc-900">
+              <tr>
+                <th className="border-b border-zinc-800 px-4 py-3 font-semibold text-zinc-100">
+                  Component
+                </th>
+                <th className="border-b border-zinc-800 px-4 py-3 font-semibold text-zinc-100">
+                  Arduino Connection
+                </th>
+                <th className="border-b border-zinc-800 px-4 py-3 font-semibold text-zinc-100">
+                  Purpose
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-zinc-950/40 align-top">
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-200">
+                  Laser transmitter module
+                </td>
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-300">
+                  Transmitter Arduino Uno, signal to D3, VCC to 5V, GND to GND
+                </td>
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-300">
+                  Sends Morse-coded laser pulses
+                </td>
+              </tr>
+              <tr className="bg-zinc-950/10 align-top">
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-200">
+                  5-way navigation switch module
+                </td>
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-300">
+                  Transmitter Arduino Uno, Up to D4, Right to D5, Left to D6, Down to D7, Center
+                  press to D8, VCC to 5V, GND/COM to GND
+                </td>
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-300">
+                  Takes user input for message transmission
+                </td>
+              </tr>
+              <tr className="bg-zinc-950/40 align-top">
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-200">
+                  Laser receiver or light sensor module
+                </td>
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-300">
+                  Receiver Arduino Uno, signal output to D2, VCC to 5V, GND to GND
+                </td>
+                <td className="border-b border-zinc-800 px-4 py-3 text-zinc-300">
+                  Detects incoming laser pulses
+                </td>
+              </tr>
+              <tr className="bg-zinc-950/10 align-top">
+                <td className="px-4 py-3 text-zinc-200">16x2 LCD display</td>
+                <td className="px-4 py-3 text-zinc-300">
+                  Receiver Arduino Uno, RS to D7, E to D8, D4 to D9, D5 to D10, D6 to D11, D7 to
+                  D12, VSS to GND, VDD to 5V, RW to GND
+                </td>
+                <td className="px-4 py-3 text-zinc-300">Displays decoded message output</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <section className="panel space-y-6 text-sm leading-7 text-zinc-300">
         <article>
           <h3 className="text-lg font-semibold text-zinc-100">The Outcome</h3>
