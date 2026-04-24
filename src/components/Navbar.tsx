@@ -11,15 +11,15 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
-        <Link href="/" className="text-sm font-semibold tracking-wide text-zinc-100">
+        <Link href="/" className="text-sm font-semibold tracking-wide text-slate-900">
           Nijat Taghizade
         </Link>
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="rounded-md border border-zinc-700 px-3 py-2 text-xs text-zinc-200 md:hidden"
+          className="rounded-md border border-slate-300 bg-white px-3 py-2 text-xs text-slate-700 md:hidden"
           aria-label="Toggle navigation menu"
         >
           Menu
@@ -36,8 +36,8 @@ export function Navbar() {
                   href={link.href}
                   className={`rounded-md px-3 py-2 text-sm transition ${
                     active
-                      ? "bg-zinc-800 text-zinc-100"
-                      : "text-zinc-300 hover:bg-zinc-900 hover:text-zinc-100"
+                      ? "bg-blue-100 text-blue-700"
+                      : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
                   }`}
                 >
                   {link.label}
@@ -48,7 +48,7 @@ export function Navbar() {
         </ul>
       </nav>
       {open ? (
-        <div className="border-t border-zinc-800 bg-zinc-950 md:hidden">
+        <div className="border-t border-slate-200 bg-white md:hidden">
           <ul className="mx-auto grid w-full max-w-6xl gap-1 px-5 py-3 sm:px-8 lg:px-10">
             {siteConfig.navLinks.map((link) => {
               const active =
@@ -61,7 +61,9 @@ export function Navbar() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className={`block rounded-md px-3 py-2 text-sm ${
-                      active ? "bg-zinc-800 text-zinc-100" : "text-zinc-300 hover:bg-zinc-900"
+                      active
+                        ? "bg-blue-100 text-blue-700"
+                        : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
                     }`}
                   >
                     {link.label}

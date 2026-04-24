@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { siteConfig } from "@/data/site";
 
 import "./globals.css";
@@ -49,10 +50,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-zinc-950 text-zinc-100">
-        <div className="relative min-h-screen overflow-x-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(6,182,212,0.08),transparent_30%),radial-gradient(circle_at_90%_0%,rgba(16,185,129,0.08),transparent_28%)]" />
+      <body className="min-h-full bg-white text-slate-900">
+        <div className="relative min-h-screen overflow-x-hidden bg-white text-slate-900">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(59,130,246,0.12),transparent_33%),radial-gradient(circle_at_90%_0%,rgba(16,185,129,0.12),transparent_30%)]" />
           <div className="relative z-10 flex min-h-screen flex-col">
+            <ScrollReveal />
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />

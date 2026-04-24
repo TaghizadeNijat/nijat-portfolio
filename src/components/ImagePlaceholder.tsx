@@ -7,12 +7,12 @@ type ImagePlaceholderProps = {
 export function ImagePlaceholder({ title, className = "" }: ImagePlaceholderProps) {
   return (
     <figure
-      className={`rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] ${className}`}
+      className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] ${className}`}
     >
-      <div className="flex min-h-48 items-center justify-center rounded-xl border border-dashed border-zinc-700 bg-zinc-950/70 p-6 text-center">
+      <div className="flex min-h-48 items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center">
         <div>
-          <p className="text-sm font-medium text-zinc-200">{title}</p>
-          <p className="mt-2 text-xs text-zinc-400">
+          <p className="text-sm font-medium text-slate-700">{title}</p>
+          <p className="mt-2 text-xs text-slate-500">
             Replace this placeholder with your final project image asset.
           </p>
         </div>

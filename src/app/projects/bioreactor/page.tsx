@@ -17,86 +17,60 @@ export default function BioreactorProjectPage() {
       <SectionHeader
         eyebrow="Project"
         title="Biomedical Bioreactor Mixing Mechanism"
-        description="A motor-driven automation concept for cell mixing inside a bioreactor, developed in the Biomedical Microsystems Laboratory at Georgia Tech."
+        description="An electromechanical automation prototype that replaces manual vessel rotation/tilt with repeatable, programmable motion in a biomedical lab workflow."
       />
 
-      <section className="panel space-y-6 text-sm leading-7 text-zinc-300">
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Overview</h3>
-          <p className="mt-3">
-            This project focuses on automating cell-mixing routines in a bioreactor environment.
-            Traditional workflows relied on manual rotation and tilt operations that were repetitive
-            and operator-dependent. The objective was to create a motor-driven mechanism that could
-            execute programmable motion profiles more consistently while reducing manual workload.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Problem</h3>
-          <p className="mt-3">
-            Manual handling introduces variability in timing, angle consistency, and repeatability.
-            In a biomedical context, those inconsistencies can affect process reliability and make
-            comparative testing more difficult. The challenge was to design a mechanical system that
-            can hold a vessel securely while applying controlled rotational and tilt motion in a way
-            that is precise enough for lab workflow and practical enough for operation.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">My Role</h3>
-          <p className="mt-3">
-            I contributed to designing and prototyping both the gripping mechanism and the rotation
-            mechanism. My work emphasized design feasibility, motion integrity, and engineering
-            iteration: evaluating how to grip the vessel safely, transfer torque effectively, and
-            preserve alignment under movement cycles.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Mechanical / System Design</h3>
-          <p className="mt-3">
-            The system concept uses a motor-coupled motion stage with fixture geometry selected to
-            balance grip force and accessibility. Early design iterations assessed friction behavior,
-            tolerance sensitivity, and assembly practicality. A key concern was creating a secure
-            interface without introducing excessive clamping stress that could compromise the setup
-            or slow routine operation.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Control / Motion Idea</h3>
-          <p className="mt-3">
-            The motion strategy replaces ad hoc manual movement with timed sequences for rotation and
-            tilt. Conceptually, this enables profile-based control where angle, duration, and cycle
-            frequency can be parameterized and adjusted by protocol. This structure supports better
-            repeatability and creates a pathway to future closed-loop refinement.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Why It Matters</h3>
-          <p className="mt-3">
-            Even at prototype stage, this direction is valuable because it links mechanical design,
-            automation logic, and biomedical workflow efficiency. In many lab contexts, small
-            reliability improvements in routine operations can compound into meaningful gains in
-            consistency, operator time savings, and experimental throughput.
-          </p>
-        </article>
-
-        <article>
-          <h3 className="text-lg font-semibold text-zinc-100">Reflection / Skills Developed</h3>
-          <p className="mt-3">
-            This project strengthened my electromechanical design thinking and my ability to reason
-            about prototype decisions under real constraints. It reinforced practical skills in
-            mechanism ideation, hardware iteration, and systems-level decomposition of a biomedical
-            problem into designable engineering components.
-          </p>
-        </article>
+      <section className="panel space-y-4 text-sm leading-7 text-slate-700">
+        <h3 className="text-lg font-semibold text-slate-900">Technical Summary</h3>
+        <ul className="space-y-3">
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span>
+              Reframed manual tilt/rotation cell-mixing into a parameterized motion-control problem
+              with configurable angle, dwell time, and cycle frequency.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span>
+              Co-designed and iterated a gripping interface to maintain vessel stability under
+              repeated motion while avoiding excessive clamp stress and operator friction.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span>
+              Evaluated torque transfer, alignment retention, and tolerance sensitivity to improve
+              mechanical repeatability during sustained rotation/tilt cycles.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span>
+              Structured the architecture around motor-coupled actuation plus protocol-driven timing
+              sequences to reduce operator-dependent variability in lab routines.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span>
+              Balanced assembly practicality and fixture accessibility so the mechanism is realistic
+              for bench workflow, not only for one-off prototype demonstration.
+            </span>
+          </li>
+          <li className="flex gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span>
+              Established a clear path toward closed-loop enhancement by separating mechanical
+              constraints, motion parameters, and control-logic hooks for future feedback integration.
+            </span>
+          </li>
+        </ul>
       </section>
 
       <section className="panel">
-        <h3 className="mb-4 text-lg font-semibold text-zinc-100">Gripping and Rotation Mechanism</h3>
-        <div className="overflow-hidden rounded-xl border border-zinc-700 bg-zinc-950/70">
+        <h3 className="mb-4 text-lg font-semibold text-slate-900">Gripping and Rotation Mechanism</h3>
+        <div className="overflow-hidden rounded-xl border border-slate-300 bg-slate-50">
           <Image
             src="/images/projects/bioreactor/bioreactormechanism.png"
             alt="Gripping and rotation mechanism prototype"

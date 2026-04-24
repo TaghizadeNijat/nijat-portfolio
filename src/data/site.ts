@@ -1,10 +1,9 @@
 export type ProjectPreview = {
-  slug: "bioreactor" | "pathfindr" | "polen" | "discovery-project";
+  slug: "bioreactor" | "pathfindr" | "polen" | "analog-power-monitoring-pcb";
   title: string;
   subtitle: string;
   summary: string;
   tech: string[];
-  status: "Complete" | "In Progress";
 };
 
 export type TimelineItem = {
@@ -20,15 +19,13 @@ export const siteConfig = {
   tagline:
     "Ambitious, globally minded, and hands-on engineer-in-training focused on embedded systems, hardware design, and semiconductor innovation.",
   description:
-    "Official ePortfolio for Nijat Taghizade, a freshman studying Electrical Engineering at Georgia Tech. This portfolio documents technical projects, research, career goals, and professional development.",
+    "Official ePortfolio for Nijat Taghizade, a freshman studying Electrical Engineering at Georgia Tech. This portfolio documents technical projects, research, and professional development.",
   github: "https://github.com/TaghizadeNijat",
-  linkedin: "https://www.linkedin.com/in/nijat-taghizade-1b56b82a1/",
+  linkedin: "https://www.linkedin.com/in/nijat-taghizade/",
   email: "ntaghizade3@gatech.edu",
   navLinks: [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
     { href: "/resume", label: "Resume" },
-    { href: "/career-goals", label: "Career Goals" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
   ],
@@ -50,40 +47,57 @@ export const quickFacts = [
 
 export const featuredProjects: ProjectPreview[] = [
   {
+    slug: "analog-power-monitoring-pcb",
+    title: "Analog Power Monitoring PCB",
+    subtitle: "KiCad Analog + Embedded Interface Project",
+    summary:
+      "Designed and validated a 2-layer power-monitoring PCB with protected 5 A input, analog voltage/current sensing front-ends, and quantified 12-bit ADC performance through Python simulation.",
+    tech: [
+      "KiCad PCB Design",
+      "Analog Signal Conditioning",
+      "ADC Interface Design",
+      "Python Simulation",
+      "Power Electronics",
+      "Numpy",
+    ],
+  },
+  {
     slug: "bioreactor",
     title: "Biomedical Bioreactor Mixing Mechanism",
     subtitle: "Biomedical Microsystems Laboratory, Georgia Tech",
     summary:
-      "Designed a motor-driven mixing system to automate cell culture motion profiles, replacing manual tilt and rotation routines with programmable movement.",
-    tech: ["Electromechanical Design", "Firmware Prototyping", "Biomedical Systems"],
-    status: "In Progress",
+      "Engineered a programmable bioreactor motion prototype with a motorized grip-and-rotation assembly to replace variable manual mixing and improve protocol repeatability.",
+    tech: [
+      "Electromechanical Design",
+      "Firmware Prototyping",
+      "Fusion360",
+      "C++",
+      "Arduino",
+    ],
   },
   {
     slug: "pathfindr",
     title: "PathFindr",
     subtitle: "AI ATL Hackathon Winner",
     summary:
-      "Built an accessibility-focused iOS app for users with low or no vision, combining LiDAR sensing, multimodal AI agents, and adaptive spoken guidance.",
-    tech: ["Swift", "Flask", "Google ADK", "Gemini", "ARKit"],
-    status: "Complete",
+      "Built an iOS accessibility navigator that fuses ARKit LiDAR depth sensing, multimodal agent orchestration, and low-latency voice/haptic guidance for blind and low-vision users.",
+    tech: ["Swift", "Flask", "Google ADK", "GeminiAPI", "ARKit", "Firebase", "LIDAR"],
   },
   {
     slug: "polen",
     title: "PolEn",
     subtitle: "Real-Time Macroeconomic Policy Engine",
     summary:
-      "Developed a policy simulation platform using state-space modeling, Monte Carlo forecasting, and reinforcement learning to evaluate monetary actions.",
-    tech: ["Python", "Kalman Filter", "Numba", "PPO", "Gymnasium"],
-    status: "Complete",
-  },
-  {
-    slug: "discovery-project",
-    title: "Arduino-Based Laser Communication System",
-    subtitle: "Discovery Project (ECE ePortfolio Requirement)",
-    summary:
-      "Built a two-device Morse-code laser communication system with reliable decoding, LCD output, and full end-to-end prototype validation.",
-    tech: ["Arduino", "Embedded C/C++", "Signal Processing", "I2C Displays"],
-    status: "Complete",
+      "Developed a macroeconomic policy engine using Kalman state estimation, regime-aware Monte Carlo simulation, and PPO baselines to compare easing/holding/tightening actions under tail risk.",
+    tech: [
+      "Python",
+      "Kalman Filter",
+      "Numba",
+      "PPO",
+      "Gymnasium",
+      "Numpy",
+      "Monte Carlo Simulation",
+    ],
   },
 ];
 

@@ -8,28 +8,22 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6 transition hover:-translate-y-1 hover:border-zinc-700 hover:shadow-xl hover:shadow-cyan-950/20">
+    <article
+      data-reveal
+      className="group project-card rounded-2xl border border-blue-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/70"
+    >
       <div className="flex items-center justify-between gap-3">
-        <p className="text-xs uppercase tracking-[0.18em] text-cyan-300/80">{project.subtitle}</p>
-        <span
-          className={`rounded-full px-3 py-1 text-[11px] font-medium ${
-            project.status === "Complete"
-              ? "bg-emerald-500/10 text-emerald-300 ring-1 ring-emerald-500/30"
-              : "bg-amber-500/10 text-amber-300 ring-1 ring-amber-500/30"
-          }`}
-        >
-          {project.status}
-        </span>
+        <p className="text-xs uppercase tracking-[0.18em] text-blue-600">{project.subtitle}</p>
       </div>
 
-      <h3 className="mt-4 text-xl font-semibold text-zinc-100">{project.title}</h3>
-      <p className="mt-4 text-sm leading-7 text-zinc-300">{project.summary}</p>
+      <h3 className="mt-4 text-xl font-semibold text-slate-900">{project.title}</h3>
+      <p className="mt-4 text-sm leading-7 text-slate-700">{project.summary}</p>
 
       <ul className="mt-5 flex flex-wrap gap-2">
         {project.tech.map((tag) => (
           <li
             key={tag}
-            className="rounded-full border border-zinc-700 bg-zinc-950/70 px-3 py-1 text-xs text-zinc-300"
+            className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs text-emerald-700"
           >
             {tag}
           </li>
@@ -38,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <Link
         href={`/projects/${project.slug}`}
-        className="mt-6 inline-flex text-sm font-medium text-cyan-300 transition group-hover:text-cyan-200"
+        className="mt-6 inline-flex text-sm font-medium text-blue-600 transition group-hover:text-blue-700"
       >
         View project details -&gt;
       </Link>
